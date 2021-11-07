@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+}
+
+.number {
+    height: 160px;
+    width: 100px;
+    font-size: 2em;
+    height: 1.2em;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+}
+
+#color {
+    background-color: rgb(255, 124, 64);
+}
+
+.stop_Btn {
+    margin-top: 2.5em;
+}
+
+p {
+    display: inline-block;
+    font-size: 30px;
+    margin: 0;
+}
