@@ -30,6 +30,9 @@ startBtn.addEventListener("click", slot_start3);
 stopBtn1.addEventListener("click", slot_stop1);
 stopBtn2.addEventListener("click", slot_stop2);
 stopBtn3.addEventListener("click", slot_stop3);
+stopBtn1.disabled = true;
+stopBtn2.disabled = true;
+stopBtn3.disabled = true;
 
 let timer1;
 let timer2;
@@ -48,9 +51,6 @@ let sec13 = 1;
 let stop1 = false;
 let stop2 = false;
 let stop3 = false;
-
-//スタートボタンが押されたかどうかを判定する変数
-let start = false;
 
 //スロットを動かすタイマーの開始関数（setInterval）
 function slot_start1() {
@@ -73,8 +73,6 @@ function slot_start3() {
 
 //実際に数字を1~9で動かす関数
 function cahnge_num1() {
-    start = true;
-    stop1 = false;
     num01.textContent = sec01;
     num1.textContent = sec1;
     num11.textContent = sec11;
@@ -93,7 +91,6 @@ function cahnge_num1() {
 };
 
 function cahnge_num2() {
-    stop2 = false;
     num02.textContent = sec02;
     num2.textContent = sec2;
     num12.textContent = sec12;
@@ -112,7 +109,6 @@ function cahnge_num2() {
 };
 
 function cahnge_num3() {
-    stop3 = false;
     num03.textContent = sec03;
     num3.textContent = sec3;
     num13.textContent = sec13;
@@ -132,35 +128,29 @@ function cahnge_num3() {
 
 //スロットを動かすタイマーの停止関数（setInterval）
 function slot_stop1() {
-    if (start = true) {
-        clearInterval(timer1);
-        stopBtn1.disabled = true;
-        stop1 = true;
-        if (stop1 == stop2 && stop2 == stop3) {
-            judge();
-        };
+    clearInterval(timer1);
+    stopBtn1.disabled = true;
+    stop1 = true;
+    if (stop1 == stop2 && stop2 == stop3) {
+        judge();
     };
 };
 
 function slot_stop2() {
-    if (start = true) {
-        clearInterval(timer2);
-        stopBtn2.disabled = true;
-        stop2 = true;
-        if (stop1 == stop2 && stop2 == stop3) {
-            judge();
-        };
+    clearInterval(timer2);
+    stopBtn2.disabled = true;
+    stop2 = true;
+    if (stop1 == stop2 && stop2 == stop3) {
+        judge();
     };
 };
 
 function slot_stop3() {
-    if (start = true) {
-        clearInterval(timer3);
-        stopBtn3.disabled = true;
-        stop3 = true;
-        if (stop1 == stop2 && stop2 == stop3) {
-            judge();
-        };
+    clearInterval(timer3);
+    stopBtn3.disabled = true;
+    stop3 = true;
+    if (stop1 == stop2 && stop2 == stop3) {
+        judge();
     };
 };
 
