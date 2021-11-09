@@ -44,10 +44,13 @@ let sec11 = 1;
 let sec12 = 1;
 let sec13 = 1;
 
-//停止ボタンが3つ全て押されたかどうかを判定する変数
-let counter1 = false;
-let counter2 = false;
-let counter3 = false;
+//ストップボタンが3つ全て押されたかどうかを判定する変数
+let stop1 = false;
+let stop2 = false;
+let stop3 = false;
+
+//スタートボタンが押されたかどうかを判定する変数
+let start = false;
 
 //スロットを動かすタイマーの開始関数（setInterval）
 function slot_start1() {
@@ -70,7 +73,8 @@ function slot_start3() {
 
 //実際に数字を1~9で動かす関数
 function cahnge_num1() {
-    counter1 = false;
+    start = true;
+    stop1 = false;
     num01.textContent = sec01;
     num1.textContent = sec1;
     num11.textContent = sec11;
@@ -89,7 +93,7 @@ function cahnge_num1() {
 };
 
 function cahnge_num2() {
-    counter2 = false;
+    stop2 = false;
     num02.textContent = sec02;
     num2.textContent = sec2;
     num12.textContent = sec12;
@@ -108,7 +112,7 @@ function cahnge_num2() {
 };
 
 function cahnge_num3() {
-    counter3 = false;
+    stop3 = false;
     num03.textContent = sec03;
     num3.textContent = sec3;
     num13.textContent = sec13;
@@ -128,44 +132,47 @@ function cahnge_num3() {
 
 //スロットを動かすタイマーの停止関数（setInterval）
 function slot_stop1() {
-    clearInterval(timer1);
-    stopBtn1.disabled = true;
-    counter1 = true;
-    if (counter1 == counter2 && counter2 == counter3) {
-        judge();
+    if (start = true) {
+        clearInterval(timer1);
+        stopBtn1.disabled = true;
+        stop1 = true;
+        if (stop1 == stop2 && stop2 == stop3) {
+            judge();
+        };
     };
 };
 
 function slot_stop2() {
-    clearInterval(timer2);
-    stopBtn2.disabled = true;
-    counter2 = true;
-    if (counter1 == counter2 && counter2 == counter3) {
-        judge();
+    if (start = true) {
+        clearInterval(timer2);
+        stopBtn2.disabled = true;
+        stop2 = true;
+        if (stop1 == stop2 && stop2 == stop3) {
+            judge();
+        };
     };
 };
 
 function slot_stop3() {
-    clearInterval(timer3);
-    stopBtn3.disabled = true;
-    counter3 = true;
-    if (counter1 == counter2 && counter2 == counter3) {
-        judge();
+    if (start = true) {
+        clearInterval(timer3);
+        stopBtn3.disabled = true;
+        stop3 = true;
+        if (stop1 == stop2 && stop2 == stop3) {
+            judge();
+        };
     };
 };
 
 //全てのタイマーが停止した際にスロットの結果を判定する関数
 function judge() {
     if (sec1 == sec2 && sec2 == sec3) {
-        alert("おめでとう！")
+        alert("おめでとう！");
     } else {
-        alert("残念！再挑戦！")
+        alert("残念！再挑戦！");
     };
     startBtn.disabled = false;
-    counter1 = false;
-    counter2 = false;
-    counter3 = false;
-    sec1 = 0;
-    sec2 = 0;
-    sec3 = 0;
+    stop1 = false;
+    stop2 = false;
+    stop3 = false;
 };
