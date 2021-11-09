@@ -30,9 +30,6 @@ startBtn.addEventListener("click", slot_start3);
 stopBtn1.addEventListener("click", slot_stop1);
 stopBtn2.addEventListener("click", slot_stop2);
 stopBtn3.addEventListener("click", slot_stop3);
-stopBtn1.disabled = true;
-stopBtn2.disabled = true;
-stopBtn3.disabled = true;
 
 let timer1;
 let timer2;
@@ -51,6 +48,9 @@ let sec13 = 1;
 let stop1 = false;
 let stop2 = false;
 let stop3 = false;
+
+//初回にスタートボタンが押されているかどうかを判定する関数
+let start = false;
 
 //スロットを動かすタイマーの開始関数（setInterval）
 function slot_start1() {
@@ -73,6 +73,7 @@ function slot_start3() {
 
 //実際に数字を1~9で動かす関数
 function cahnge_num1() {
+    start = true;
     num01.textContent = sec01;
     num1.textContent = sec1;
     num11.textContent = sec11;
@@ -128,30 +129,36 @@ function cahnge_num3() {
 
 //スロットを動かすタイマーの停止関数（setInterval）
 function slot_stop1() {
-    clearInterval(timer1);
-    stopBtn1.disabled = true;
-    stop1 = true;
-    if (stop1 == stop2 && stop2 == stop3) {
-        judge();
+    if (start === true) {
+        clearInterval(timer1);
+        stopBtn1.disabled = true;
+        stop1 = true;
+        if (stop1 == stop2 && stop2 == stop3) {
+            judge();
+        };
     };
 };
 
 function slot_stop2() {
-    clearInterval(timer2);
-    stopBtn2.disabled = true;
-    stop2 = true;
-    if (stop1 == stop2 && stop2 == stop3) {
-        judge();
+    if (start === true) {
+        clearInterval(timer2);
+        stopBtn2.disabled = true;
+        stop2 = true;
+        if (stop1 == stop2 && stop2 == stop3) {
+            judge();
+        };
     };
 };
 
 function slot_stop3() {
-    clearInterval(timer3);
-    stopBtn3.disabled = true;
-    stop3 = true;
-    if (stop1 == stop2 && stop2 == stop3) {
-        judge();
-    };
+    if (start === true) {
+        clearInterval(timer3);
+        stopBtn3.disabled = true;
+        stop3 = true;
+        if (stop1 == stop2 && stop2 == stop3) {
+            judge();
+        };
+    }
 };
 
 //全てのタイマーが停止した際にスロットの結果を判定する関数
